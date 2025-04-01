@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "How was your day?",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true
+  }
+}
