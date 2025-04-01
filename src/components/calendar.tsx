@@ -125,7 +125,12 @@ export function Calendar({ onDayClick, dayEntries }: CalendarProps) {
                   isToday(day) &&
                     !dayEntry &&
                     "border-green-500 font-bold bg-green-50",
-                  dayEntry && getScoreColor(dayEntry.score)
+                  isToday(day) &&
+                    dayEntry &&
+                    `border-green-500 font-bold ${getScoreColor(
+                      dayEntry.score
+                    )}`,
+                  dayEntry && !isToday(day) && getScoreColor(dayEntry.score)
                 )}
               >
                 <time

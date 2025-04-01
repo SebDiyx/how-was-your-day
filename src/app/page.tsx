@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-20 bg-gradient-to-b from-amber-100 to-white">
       <h1 className="text-3xl font-bold mb-8 text-amber-800 flex items-center gap-2">
-        How was your day?
+        🌻 How was your day? 🌻
       </h1>
 
       <div className="w-full max-w-xl">
