@@ -55,7 +55,7 @@ export function Calendar({ onDayClick, dayEntries }: CalendarProps) {
       case 1:
         return "bg-yellow-300 text-black"; // sunflower yellow
       case 2:
-        return "bg-yellow-300 text-black border-2 border-green-500"; // bright yellow with green border
+        return "bg-yellow-300 text-black"; // sunflower yellow
       default:
         return "";
     }

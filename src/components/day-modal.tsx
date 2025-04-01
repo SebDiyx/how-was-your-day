@@ -188,8 +188,8 @@ export function DayModal({
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center text-black mb-1 ${
                       score === 2
-                        ? "bg-yellow-300 ring-2 ring-offset-2 ring-green-500 border-2 border-green-500"
-                        : "bg-yellow-300/70 border-2 border-green-500/70"
+                        ? "bg-yellow-300 ring-2 ring-offset-2 ring-yellow-300"
+                        : "bg-yellow-300/70"
                     }`}
                   >
                     2
