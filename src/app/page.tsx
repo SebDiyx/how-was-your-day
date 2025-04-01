@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Calendar } from "@/components/calendar";
 import { DayModal } from "@/components/day-modal";
 import { format } from "date-fns";
-import { Flower2 } from "lucide-react";
 
 // Define the day entry type
 export type DayEntry = {
@@ -65,12 +64,10 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-24 bg-gradient-to-b from-amber-100 to-white">
       <h1 className="text-3xl font-bold mb-8 text-amber-800 flex items-center gap-2">
-        <Flower2 className="h-8 w-8 text-yellow-500" />
         How was your day?
-        <Flower2 className="h-8 w-8 text-yellow-500" />
       </h1>
 
-      <div className="w-full max-w-5xl">
+      <div className="w-full max-w-5xl ">
         <Calendar onDayClick={handleDayClick} dayEntries={dayEntries} />
       </div>
 
