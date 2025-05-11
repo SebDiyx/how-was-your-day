@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Calendar, Home, MessageSquare } from "lucide-react";
-import Image from "next/image";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Calendar, Home, MessageSquare } from 'lucide-react';
+import Image from 'next/image';
 import {
     Sidebar,
     SidebarContent,
@@ -13,22 +13,22 @@ import {
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
-} from "@/components/ui/sidebar";
+} from '@/components/ui/sidebar';
 
 const navigationItems = [
     {
-        title: "Home",
-        href: "/",
+        title: 'Home',
+        href: '/',
         icon: Home,
     },
     {
-        title: "Calendar",
-        href: "/calendar",
+        title: 'Calendar',
+        href: '/calendar',
         icon: Calendar,
     },
     {
-        title: "Chat",
-        href: "/chat",
+        title: 'Chat',
+        href: '/chat',
         icon: MessageSquare,
     },
 ];
