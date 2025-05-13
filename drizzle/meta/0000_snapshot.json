@@ -4,8 +4,8 @@
   "id": "edc10565-04f4-405a-82d1-8a3b4f695ac5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "hwyd_dairy": {
-      "name": "hwyd_dairy",
+    "hwyd_dairy_entry": {
+      "name": "hwyd_dairy_entry",
       "columns": {
         "id": {
           "name": "id",

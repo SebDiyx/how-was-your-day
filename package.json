@@ -8,7 +8,10 @@
         "start": "next start",
         "lint": "next lint",
         "format": "prettier --write .",
-        "seed": "tsx src/server/db/seed.ts"
+        "seed": "tsx src/server/db/seed.ts",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:studio": "drizzle-kit studio"
     },
     "dependencies": {
         "@libsql/client": "^0.15.4",
@@ -24,6 +27,7 @@
         "date-fns": "^3.6.0",
         "dotenv": "^16.5.0",
         "drizzle-orm": "^0.43.1",
+        "drizzle-zod": "^0.7.1",
         "lucide-react": "^0.485.0",
         "nanoid": "^5.1.5",
         "next": "15.2.4",
