@@ -2,14 +2,14 @@ import 'dotenv/config';
 import { eq } from 'drizzle-orm';
 import { dairyEntryTable } from './schema';
 import { db } from '.';
-import { getStartOfDay } from '@/lib/dateUtils';
+import { startOfDay } from 'date-fns';
 
 async function main() {
     const now = new Date();
 
     const dairyEntry: typeof dairyEntryTable.$inferInsert = {
         user: 'Test User', // TODO: Update when auth is set up
-        date: getStartOfDay(now),
+        date: startOfDay(now),
         rating: 0,
         description: '',
     };
