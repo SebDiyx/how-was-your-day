@@ -51,20 +51,24 @@ export const dairyEntryRouter = createTRPCRouter({
             }),
         )
         .mutation(async ({ ctx, input }) => {
-            // TODO: Move this to repository layer
-            const parsed = diaryEntryInsertSchema.parse(input);
-
             if (input.id) {
                 await ctx.db
                     .update(dairyEntryTable)
                     .set({
-                        ...parsed,
+                        ...input,
+                        user: 'Test User', // TODO: get user from request context
                         updatedAt: new Date(),
                     })
-                    .where(eq(dairyEntryTable.id, input.id));
+                    .where(
+                        and(
+                            eq(dairyEntryTable.id, input.id),
+                            // Don't let users update other users' dairy entries
+                            eq(dairyEntryTable.user, 'Test User'), // TODO: get user from request context
+                        ),
+                    );
             } else {
                 await ctx.db.insert(dairyEntryTable).values({
-                    ...parsed,
+                    ...input,
                     user: 'Test User', // TODO: get user from request context
                 });
             }
