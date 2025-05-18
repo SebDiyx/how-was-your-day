@@ -1,9 +1,10 @@
-import { Label } from '@radix-ui/react-label';
 import { Button } from './ui/button';
 import { DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
-import { Textarea } from './ui/textarea';
 import { format } from 'date-fns';
-import RatingRadioGroup from './form/rating-radio-group';
+import RatingRadioGroupField from './form/rating-radio-group-field';
+import { useFormContext } from 'react-hook-form';
+import { Loader2 } from 'lucide-react';
+import { DescriptionField } from './form/text-area-field';
 
 export function DairyEntryFormHeader({ date }: { date: Date }) {
     return (
@@ -18,25 +19,15 @@ export function DairyEntryFormHeader({ date }: { date: Date }) {
 export function DairyEntryFormBody() {
     return (
         <div className="grid gap-6 py-4">
-            <RatingRadioGroup />
-
-            <div className="space-y-2">
-                <Label htmlFor="description" className="text-amber-800">
-                    Description
-                </Label>
-                <Textarea
-                    id="description"
-                    name="description"
-                    placeholder="How was your day? What happened?"
-                    rows={5}
-                    className="border-amber-200 bg-white focus-visible:ring-amber-400"
-                />
-            </div>
+            <RatingRadioGroupField />
+            <DescriptionField />
         </div>
     );
 }
 
 export function DairyEntryFormFooter({ onClose }: { onClose: () => void }) {
+    const { formState } = useFormContext();
+
     return (
         <DialogFooter>
             <Button
@@ -47,12 +38,16 @@ export function DairyEntryFormFooter({ onClose }: { onClose: () => void }) {
             >
                 Cancel
             </Button>
-            {/* TODO: Add loading state when form is submitting */}
             <Button
+                disabled={formState.isSubmitting}
                 type="submit"
-                className="bg-amber-500 text-white hover:bg-amber-600"
+                className="w-24 bg-amber-500 text-white hover:bg-amber-600"
             >
-                Save
+                {formState.isSubmitting ? (
+                    <Loader2 className="size-4 animate-spin" />
+                ) : (
+                    'Save'
+                )}
             </Button>
         </DialogFooter>
     );

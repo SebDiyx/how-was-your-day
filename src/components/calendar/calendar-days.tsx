@@ -70,6 +70,7 @@ export function CalendarDays({
                                 dayIdx === 0 && `col-start-${getDay(day) + 1}`,
                             )}
                         >
+                            {/* TODO: Pointer cursor on hover */}
                             <button
                                 type="button"
                                 onClick={() =>
