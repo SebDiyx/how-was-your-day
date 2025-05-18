@@ -8,7 +8,7 @@ async function main() {
     const now = new Date();
 
     const dairyEntry: typeof dairyEntryTable.$inferInsert = {
-        user: 'Test', // TODO: Update when auth is set up
+        user: 'Test User', // TODO: Update when auth is set up
         date: getStartOfDay(now),
         rating: 0,
         description: '',
@@ -32,4 +32,4 @@ async function main() {
     // console.log('Dairy entry deleted!');
 }
 
-main();
+await main();

@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+import '@/styles/globals.css';
 import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { TRPCReactProvider } from '@/trpc/react';
+import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -29,17 +31,20 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <SidebarProvider>
-                    <div className="flex min-h-screen w-full">
-                        <AppSidebar />
-                        <main className="flex min-h-screen bg-gradient-to-b from-amber-100 to-white w-full">
-                            <SidebarTrigger className="bg-amber-200 hover:bg-amber-300 text-amber-900 border border-amber-300 m-4" />
-                            <div className="flex-1 justify-center items-center p-4 md:p-20 w-full">
-                                {children}
-                            </div>
-                        </main>
-                    </div>
-                </SidebarProvider>
+                <TRPCReactProvider>
+                    <SidebarProvider>
+                        <div className="flex min-h-screen w-full">
+                            <AppSidebar />
+                            <main className="flex min-h-screen w-full bg-gradient-to-b from-amber-100 to-white">
+                                <SidebarTrigger className="m-4 border border-amber-300 bg-amber-200 text-amber-900 hover:bg-amber-300" />
+                                <div className="w-full flex-1 items-center justify-center p-4 md:p-20">
+                                    {children}
+                                </div>
+                            </main>
+                        </div>
+                    </SidebarProvider>
+                </TRPCReactProvider>
+                <Toaster />
             </body>
         </html>
     );

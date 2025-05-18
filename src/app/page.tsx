@@ -1,87 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-import { Calendar } from '@/components/calendar';
-import { DayModal } from '@/components/day-modal';
-import { format } from 'date-fns';
+import { Calendar } from '@/components/calendar/calendar';
 
-// Define the day entry type
-export type DayEntry = {
+export type MinDairyEntry = {
+    id: number;
     date: Date;
-    score: number;
-    description: string;
+    rating: number;
+    description: string | null;
 };
 
 export default function Home() {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [dayEntries, setDayEntries] = useState<DayEntry[]>([]);
-
-    const handleDayClick = (day: Date) => {
-        setSelectedDate(day);
-        setIsModalOpen(true);
-    };
-
-    const handleSaveEntry = (score: number, description: string) => {
-        if (!selectedDate) return;
-
-        // Check if there's already an entry for this date
-        const existingEntryIndex = dayEntries.findIndex(
-            (entry) =>
-                format(entry.date, 'yyyy-MM-dd') ===
-                format(selectedDate, 'yyyy-MM-dd'),
-        );
-
-        if (existingEntryIndex >= 0) {
-            // Update existing entry
-            const updatedEntries = [...dayEntries];
-            updatedEntries[existingEntryIndex] = {
-                date: selectedDate,
-                score,
-                description,
-            };
-            setDayEntries(updatedEntries);
-        } else {
-            // Add new entry
-            setDayEntries([
-                ...dayEntries,
-                {
-                    date: selectedDate,
-                    score,
-                    description,
-                },
-            ]);
-        }
-
-        setIsModalOpen(false);
-    };
-
-    const getEntryForDate = (date: Date): DayEntry | undefined => {
-        return dayEntries.find(
-            (entry) =>
-                format(entry.date, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd'),
-        );
-    };
-
     return (
         <>
-            <h1 className="text-3xl font-bold mb-8 text-amber-800 flex items-center gap-2">
+            <h1 className="mb-8 flex items-center gap-2 text-3xl font-bold text-amber-800">
                 🌻 How was your day? 🌻
             </h1>
 
             <div className="w-full max-w-xl">
-                <Calendar onDayClick={handleDayClick} dayEntries={dayEntries} />
+                <Calendar />
             </div>
-
-            <DayModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSave={handleSaveEntry}
-                date={selectedDate}
-                initialData={
-                    selectedDate ? getEntryForDate(selectedDate) : undefined
-                }
-            />
         </>
     );
 }

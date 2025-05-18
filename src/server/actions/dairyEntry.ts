@@ -4,21 +4,33 @@ import { eq } from 'drizzle-orm';
 import { db } from '../db';
 import {
     dairyEntryTable,
-    DiaryEntryInsert,
+    type DiaryEntryInsert,
     diaryEntryInsertSchema,
-    DiaryEntryUpdate,
+    type DiaryEntryUpdate,
     diaryEntryUpdateSchema,
 } from '../db/schema';
 
-export async function getDairyEntries() {
-    const dairyEntries = await db.select().from(dairyEntryTable);
-    return dairyEntries;
-}
-
 export async function createDairyEntry(input: DiaryEntryInsert) {
-    const parsed = diaryEntryInsertSchema.parse(input);
-    const newDairyEntry = await db.insert(dairyEntryTable).values(parsed);
-    return newDairyEntry;
+    try {
+        const parsed = diaryEntryInsertSchema.parse(input);
+        const res = await db.insert(dairyEntryTable).values(parsed);
+
+        return {
+            success: true,
+            // data: res., // TODO: Should we return the inserted row?
+            message: 'Dairy entry created successfully',
+        };
+    } catch (error) {
+        console.error('ERROR', error);
+        return {
+            success: false,
+            error:
+                error instanceof Error
+                    ? error.message
+                    : 'Unknown error occurred',
+            message: 'Failed to create dairy entry',
+        };
+    }
 }
 
 export async function updateDairyEntry(input: DiaryEntryUpdate) {

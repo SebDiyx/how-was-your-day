@@ -37,14 +37,14 @@ export function AppSidebar() {
     const pathname = usePathname();
 
     return (
-        <Sidebar className="bg-amber-50 border-r border-amber-200 gap-0">
+        <Sidebar className="gap-0 border-r border-amber-200 bg-amber-50">
             <SidebarContent>
                 {/* Logo */}
                 <div className="flex items-center pt-3 pl-2">
                     <Image src="/logo.svg" alt="Logo" width={80} height={80} />
                 </div>
                 <SidebarGroup>
-                    <SidebarGroupLabel className="text-amber-800 font-medium">
+                    <SidebarGroupLabel className="font-medium text-amber-800">
                         Navigation
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
