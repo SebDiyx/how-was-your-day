@@ -25,7 +25,7 @@ export function DairyEntryFormBody() {
     );
 }
 
-export function DairyEntryFormFooter({ onClose }: { onClose: () => void }) {
+export function DairyEntryFormFooter({ onCancel }: { onCancel: () => void }) {
     const { formState } = useFormContext();
 
     return (
@@ -33,7 +33,7 @@ export function DairyEntryFormFooter({ onClose }: { onClose: () => void }) {
             <Button
                 type="button"
                 variant="outline"
-                onClick={onClose}
+                onClick={onCancel}
                 className="border-amber-300 text-amber-800 hover:bg-amber-100 hover:text-amber-900"
             >
                 Cancel

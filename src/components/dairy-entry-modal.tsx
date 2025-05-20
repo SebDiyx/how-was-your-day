@@ -80,7 +80,7 @@ export function DairyEntryModal({
                     <form onSubmit={form.handleSubmit(onSubmit)}>
                         <DairyEntryFormHeader date={date} />
                         <DairyEntryFormBody />
-                        <DairyEntryFormFooter onClose={onClose} />
+                        <DairyEntryFormFooter onCancel={onClose} />
                     </form>
                 </Form>
             </DialogContent>
