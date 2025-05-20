@@ -35,9 +35,9 @@ export default function RootLayout({
                     <SidebarProvider>
                         <div className="flex min-h-screen w-full">
                             <AppSidebar />
-                            <main className="flex min-h-screen w-full bg-gradient-to-b from-amber-100 to-white">
+                            <main className="flex min-h-screen w-full flex-col bg-gradient-to-b from-amber-100 to-white">
                                 <SidebarTrigger className="m-4 border border-amber-300 bg-amber-200 text-amber-900 hover:bg-amber-300" />
-                                <div className="w-full flex-1 items-center justify-center p-4 md:p-20">
+                                <div className="w-full flex-1 items-center justify-center">
                                     {children}
                                 </div>
                             </main>
