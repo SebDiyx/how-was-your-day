@@ -31,7 +31,12 @@ pnpm install
 cp .env.example .env
 ```
 
-4. Run the development server
+4. Init the DB
+```bash
+pnpm db:migrate
+```
+
+5. Run the development server
 ```bash
 pnpm dev
 ```
