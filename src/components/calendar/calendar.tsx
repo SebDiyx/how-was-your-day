@@ -3,24 +3,21 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { add, format, parse } from 'date-fns';
+import { add, format, startOfDay, startOfMonth } from 'date-fns';
 import { DairyEntryCalendarLoader } from './calendar-loader';
-import { getStartOfDayUTC } from '@/lib/utils';
 
 export function Calendar() {
-    const today = getStartOfDayUTC(new Date());
-
-    const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
-    const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', today);
+    const today = startOfDay(new Date());
+    const [currentMonth, setCurrentMonth] = useState(startOfMonth(today));
 
     function previousMonth() {
-        const firstDayPreviousMonth = add(firstDayCurrentMonth, { months: -1 });
-        setCurrentMonth(format(firstDayPreviousMonth, 'MMM-yyyy'));
+        const previousMonth = add(currentMonth, { months: -1 });
+        setCurrentMonth(previousMonth);
     }
 
     function nextMonth() {
-        const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
-        setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
+        const nextMonth = add(currentMonth, { months: 1 });
+        setCurrentMonth(nextMonth);
     }
 
     return (
@@ -28,7 +25,7 @@ export function Calendar() {
             <div className="w-full rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-6 shadow-inner">
                 <div className="mb-6 flex items-center justify-between">
                     <h2 className="ml-2 flex items-center text-2xl font-bold text-amber-800">
-                        {format(firstDayCurrentMonth, 'MMMM yyyy')}
+                        {format(currentMonth, 'MMMM yyyy')}
                     </h2>
                     <div className="flex gap-2">
                         <Button
@@ -61,9 +58,7 @@ export function Calendar() {
                         ),
                     )}
                 </div>
-                <DairyEntryCalendarLoader
-                    firstDayCurrentMonth={firstDayCurrentMonth}
-                />
+                <DairyEntryCalendarLoader currentMonth={currentMonth} />
             </div>
         </>
     );

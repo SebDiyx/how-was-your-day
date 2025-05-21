@@ -3,13 +3,14 @@ import { getVisibleRange } from './utils';
 import { CalendarDays } from './calendar-days';
 
 type CalendarLoaderProps = {
-    firstDayCurrentMonth: Date;
+    currentMonth: Date;
 };
 
 export function DairyEntryCalendarLoader({
-    firstDayCurrentMonth,
+    currentMonth,
 }: CalendarLoaderProps) {
-    const visibleRange = getVisibleRange(firstDayCurrentMonth);
+    const visibleRange = getVisibleRange(currentMonth);
+
     const { data: diaryEntries, isLoading } = api.dairyEntry.getMany.useQuery({
         startDate: visibleRange.start,
         endDate: visibleRange.end,
@@ -23,7 +24,7 @@ export function DairyEntryCalendarLoader({
     return (
         <CalendarDays
             diaryEntries={diaryEntries ?? []}
-            firstDayCurrentMonth={firstDayCurrentMonth}
+            currentMonth={currentMonth}
         />
     );
 }

@@ -15,14 +15,14 @@ import { useState } from 'react';
 
 interface CalendarDaysProps {
     diaryEntries: MinDairyEntry[];
-    firstDayCurrentMonth: Date;
+    currentMonth: Date;
 }
 
 export function CalendarDays({
     diaryEntries,
-    firstDayCurrentMonth,
+    currentMonth,
 }: CalendarDaysProps) {
-    const visibleRange = getVisibleRange(firstDayCurrentMonth);
+    const visibleRange = getVisibleRange(currentMonth);
     const visibleDays = eachDayOfInterval(visibleRange);
 
     const getDiaryEntry = (day: Date): MinDairyEntry | undefined => {
@@ -63,7 +63,7 @@ export function CalendarDays({
                                 }
                                 className={cn(
                                     'flex h-full w-full flex-col items-center justify-start rounded-xl border p-2 transition',
-                                    !isSameMonth(day, firstDayCurrentMonth)
+                                    !isSameMonth(day, currentMonth)
                                         ? 'bg-white/50 text-amber-300 opacity-50 hover:bg-amber-50'
                                         : 'bg-white text-amber-900 shadow-sm hover:bg-amber-50',
                                     isToday(day) &&

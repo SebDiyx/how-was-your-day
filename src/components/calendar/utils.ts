@@ -1,9 +1,9 @@
 import { endOfMonth, startOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 
-export function getVisibleRange(firstDayCurrentMonth: Date) {
+export function getVisibleRange(date: Date) {
     return {
-        start: startOfWeek(startOfMonth(firstDayCurrentMonth)),
-        end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
+        start: startOfWeek(startOfMonth(date)),
+        end: endOfWeek(endOfMonth(date)),
     };
 }
 
