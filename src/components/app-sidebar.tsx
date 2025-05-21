@@ -44,9 +44,6 @@ export function AppSidebar() {
                     <Image src="/logo.svg" alt="Logo" width={80} height={80} />
                 </div>
                 <SidebarGroup>
-                    <SidebarGroupLabel className="font-medium text-amber-800">
-                        Navigation
-                    </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {navigationItems.map((item) => (
