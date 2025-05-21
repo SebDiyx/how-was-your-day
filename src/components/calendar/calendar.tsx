@@ -5,12 +5,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { add, format, parse } from 'date-fns';
 import { DairyEntryCalendarLoader } from './calendar-loader';
+import { getStartOfDayUTC } from '@/lib/utils';
 
 export function Calendar() {
-    const today = new Date();
+    const today = getStartOfDayUTC(new Date());
 
     const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
-    const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
+    const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', today);
 
     function previousMonth() {
         const firstDayPreviousMonth = add(firstDayCurrentMonth, { months: -1 });

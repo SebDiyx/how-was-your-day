@@ -1,10 +1,10 @@
-import { Button } from './ui/button';
-import { DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
+import { Button } from '../ui/button';
+import { DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog';
 import { format } from 'date-fns';
-import RatingRadioGroupField from './form/rating-radio-group-field';
+import RatingRadioGroupField from '../form/rating-radio-group-field';
 import { useFormContext } from 'react-hook-form';
 import { Loader2 } from 'lucide-react';
-import { DescriptionField } from './form/text-area-field';
+import { DescriptionField } from '../form/text-area-field';
 
 export function DairyEntryFormHeader({ date }: { date: Date }) {
     return (

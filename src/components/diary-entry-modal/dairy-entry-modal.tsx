@@ -2,17 +2,20 @@
 
 import type React from 'react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import type { MinDairyEntry } from '@/app/page';
-import { DairyEntryFormBody, DairyEntryFormFooter } from './dairy-entry-form';
-import { DairyEntryFormHeader } from './dairy-entry-form';
+import type { MinDairyEntry } from '@/components/diary-entry-modal/types';
+import {
+    DairyEntryFormHeader,
+    DairyEntryFormBody,
+    DairyEntryFormFooter,
+} from '@/components/diary-entry-modal/dairy-entry-form';
 import { toast } from 'sonner';
 import { api } from '@/trpc/react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form } from './ui/form';
-import { getVisibleRange } from './calendar/utils';
-import { type RatingValue } from './form/rating-radio-group-field';
+import { Form } from '@/components/ui/form';
+import { getVisibleRange } from '@/components/calendar/utils';
+import { type RatingValue } from '@/components/form/rating-radio-group-field';
 
 export interface DayModalProps {
     isOpen: boolean;
