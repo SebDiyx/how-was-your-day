@@ -15,6 +15,7 @@ type RatingFormValues = {
     rating: string;
 };
 
+// TODO: Fix pointer cursor on hover
 const RatingRadioGroupField = () => {
     const { control } = useFormContext<RatingFormValues>();
 
