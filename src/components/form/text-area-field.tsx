@@ -1,3 +1,5 @@
+'use client';
+
 import { FormField, FormItem, FormControl, FormMessage } from '../ui/form';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
