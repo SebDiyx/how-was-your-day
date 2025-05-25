@@ -9,19 +9,23 @@ import {
 } from 'date-fns';
 import type { MinDairyEntry } from '@/components/diary-entry-modal/types';
 import { cn } from '@/lib/utils';
-import { getRatingColor, getVisibleRange } from '@/components/calendar/utils';
+import {
+    getRatingColor,
+    getVisibleRange,
+} from '@/components/dairy-entry-calendar/utils';
 import { DairyEntryModal } from '@/components/diary-entry-modal/dairy-entry-modal';
 import { useState } from 'react';
+import { Button } from '../ui/button';
 
-interface CalendarDaysProps {
+interface DairyEntryCalendarDaysProps {
     diaryEntries: MinDairyEntry[];
     currentMonth: Date;
 }
 
-export function CalendarDays({
+export function DairyEntryCalendarDays({
     diaryEntries,
     currentMonth,
-}: CalendarDaysProps) {
+}: DairyEntryCalendarDaysProps) {
     const visibleRange = getVisibleRange(currentMonth);
     const visibleDays = eachDayOfInterval(visibleRange);
 
@@ -52,9 +56,7 @@ export function CalendarDays({
                                 dayIdx === 0 && `col-start-${getDay(day) + 1}`,
                             )}
                         >
-                            {/* TODO: Pointer cursor on hover */}
-                            <button
-                                type="button"
+                            <Button
                                 onClick={() =>
                                     setModalData({
                                         date: day,
@@ -62,7 +64,7 @@ export function CalendarDays({
                                     })
                                 }
                                 className={cn(
-                                    'flex h-full w-full flex-col items-center justify-start rounded-xl border p-2 transition',
+                                    'flex h-full w-full cursor-pointer flex-col items-center justify-start rounded-xl border p-2 transition',
                                     !isSameMonth(day, currentMonth)
                                         ? 'bg-white/50 text-amber-300 opacity-50 hover:bg-amber-50'
                                         : 'bg-white text-amber-900 shadow-sm hover:bg-amber-50',
@@ -90,7 +92,7 @@ export function CalendarDays({
                                         {dayEntry.rating}
                                     </div>
                                 )}
-                            </button>
+                            </Button>
                         </div>
                     );
                 })}

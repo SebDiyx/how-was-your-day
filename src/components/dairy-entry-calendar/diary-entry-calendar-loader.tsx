@@ -1,14 +1,14 @@
 import { api } from '@/trpc/react';
 import { getVisibleRange } from './utils';
-import { CalendarDays } from './calendar-days';
+import { DairyEntryCalendarDays } from './dairy-entry-calendar-days';
 
-type CalendarLoaderProps = {
+type DairyEntryCalendarLoaderProps = {
     currentMonth: Date;
 };
 
 export function DairyEntryCalendarLoader({
     currentMonth,
-}: CalendarLoaderProps) {
+}: DairyEntryCalendarLoaderProps) {
     const visibleRange = getVisibleRange(currentMonth);
 
     const { data: diaryEntries, isLoading } = api.dairyEntry.getMany.useQuery({
@@ -22,7 +22,7 @@ export function DairyEntryCalendarLoader({
     }
 
     return (
-        <CalendarDays
+        <DairyEntryCalendarDays
             diaryEntries={diaryEntries ?? []}
             currentMonth={currentMonth}
         />

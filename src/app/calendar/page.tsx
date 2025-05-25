@@ -1,4 +1,4 @@
-import { Calendar } from '@/components/calendar/calendar';
+import { DairyEntryCalendar } from '@/components/dairy-entry-calendar/dairy-entry-calendar';
 
 export default function CalendarPage() {
     return (
@@ -8,7 +8,7 @@ export default function CalendarPage() {
             </h1>
 
             <div className="w-full max-w-4xl p-8">
-                <Calendar />
+                <DairyEntryCalendar />
             </div>
         </div>
     );

@@ -12,7 +12,7 @@ import { DescriptionField } from '../form/text-area-field';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
-import { getVisibleRange } from '../calendar/utils';
+import { getVisibleRange } from '../dairy-entry-calendar/utils';
 import { api } from '@/trpc/react';
 import type { MinDairyEntry } from './types';
 import { Form } from '../ui/form';

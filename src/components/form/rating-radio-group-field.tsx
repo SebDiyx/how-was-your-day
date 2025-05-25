@@ -15,7 +15,6 @@ type RatingFormValues = {
     rating: string;
 };
 
-// TODO: Fix pointer cursor on hover
 const RatingRadioGroupField = () => {
     const { control } = useFormContext<RatingFormValues>();
 
@@ -48,7 +47,7 @@ const RatingRadioGroupField = () => {
                                 >
                                     <Label
                                         htmlFor="rating--2"
-                                        className="flex cursor-pointer flex-col items-center"
+                                        className="flex h-full cursor-pointer flex-col items-center justify-center"
                                     >
                                         <div className={`flex`}>-2</div>
                                     </Label>
@@ -69,7 +68,7 @@ const RatingRadioGroupField = () => {
                                 >
                                     <Label
                                         htmlFor="rating--1"
-                                        className="flex cursor-pointer flex-col items-center"
+                                        className="flex h-full cursor-pointer flex-col items-center justify-center"
                                     >
                                         <div className={`flex`}>-1</div>
                                     </Label>
@@ -90,7 +89,7 @@ const RatingRadioGroupField = () => {
                                 >
                                     <Label
                                         htmlFor="rating-0"
-                                        className="flex cursor-pointer flex-col items-center"
+                                        className="flex h-full cursor-pointer flex-col items-center justify-center"
                                     >
                                         <div className={`flex`}>0</div>
                                     </Label>
@@ -111,7 +110,7 @@ const RatingRadioGroupField = () => {
                                 >
                                     <Label
                                         htmlFor="rating-1"
-                                        className="flex cursor-pointer flex-col items-center"
+                                        className="flex h-full cursor-pointer flex-col items-center justify-center"
                                     >
                                         <div className={`flex`}>1</div>
                                     </Label>
@@ -132,7 +131,7 @@ const RatingRadioGroupField = () => {
                                 >
                                     <Label
                                         htmlFor="rating-2"
-                                        className="flex cursor-pointer flex-col items-center"
+                                        className="flex h-full cursor-pointer flex-col items-center justify-center"
                                     >
                                         <div className={`flex`}>2</div>
                                     </Label>

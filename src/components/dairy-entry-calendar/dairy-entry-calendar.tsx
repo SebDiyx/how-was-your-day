@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { add, format, startOfDay, startOfMonth } from 'date-fns';
-import { DairyEntryCalendarLoader } from './calendar-loader';
+import { DairyEntryCalendarLoader } from './diary-entry-calendar-loader';
 
-export function Calendar() {
+export function DairyEntryCalendar() {
     const today = startOfDay(new Date());
     const [currentMonth, setCurrentMonth] = useState(startOfMonth(today));
 
