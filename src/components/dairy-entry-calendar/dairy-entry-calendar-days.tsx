@@ -76,7 +76,7 @@ export function DairyEntryCalendarDays({
                                 className={cn(
                                     'flex h-full w-full flex-col items-center justify-start rounded-xl border p-2 transition',
                                     !isSameMonth(day, currentMonth)
-                                        ? 'bg-white/50 text-amber-300 opacity-50 hover:bg-amber-100'
+                                        ? 'bg-white/50 text-gray-300 opacity-50 hover:bg-amber-100'
                                         : 'bg-white text-amber-900 shadow-sm hover:bg-amber-100',
                                     isToday(day) &&
                                         !dayEntry &&
