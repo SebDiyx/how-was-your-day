@@ -2,6 +2,7 @@ import { DairyEntryForm } from '@/components/diary-entry-modal/dairy-entry-form'
 import { db } from '@/server/db';
 import { addDays, startOfDay } from 'date-fns';
 import { and, gte, lt } from 'drizzle-orm';
+import { Visualizations } from './visualisations';
 
 export default async function Home() {
     const today = startOfDay(new Date());
@@ -15,6 +16,7 @@ export default async function Home() {
             ),
     });
 
+    // TODO: Fix responsive design?
     if (!dairyEntryForToday) {
         return (
             <div className="flex h-full w-full items-center justify-center">
@@ -28,18 +30,5 @@ export default async function Home() {
         );
     }
 
-    // If there is a dairy entry for today, show the welcome back message + general dashboard with stats
-    // TODO: Visualizations
-    return (
-        <>
-            <div className="flex h-full flex-col items-center justify-center">
-                <h1 className="text-2xl font-bold text-amber-800">
-                    Welcome back
-                </h1>
-                <h2 className="text-4xl font-bold text-amber-800">
-                    🌻 {dairyEntryForToday?.user} 🌻
-                </h2>
-            </div>
-        </>
-    );
+    return <Visualizations />;
 }
