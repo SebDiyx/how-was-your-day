@@ -11,6 +11,7 @@ import superjson from 'superjson';
 import { ZodError } from 'zod';
 
 import { db } from '@/server/db';
+import { createDiaryEntryRepository } from '@/server/db/repositories';
 
 /**
  * 1. CONTEXT
@@ -25,8 +26,17 @@ import { db } from '@/server/db';
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
+    // TODO: Replace with actual user authentication when auth is implemented
+    const getCurrentUserId = (): string => {
+        // In the future, this would extract user ID from JWT token, session, etc.
+        // For now, return a test user ID
+        return 'Test User';
+    };
+
     return {
         db,
+        getCurrentUserId,
+        diaryEntryRepository: createDiaryEntryRepository(db),
         ...opts,
     };
 };
