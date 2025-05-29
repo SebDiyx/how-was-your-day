@@ -29,7 +29,6 @@ export default async function Home() {
     }
 
     // If there is a dairy entry for today, show the welcome back message + general dashboard with stats
-    // TODO: Visualizations
     return (
         <>
             <div className="flex h-full flex-col items-center justify-center">
