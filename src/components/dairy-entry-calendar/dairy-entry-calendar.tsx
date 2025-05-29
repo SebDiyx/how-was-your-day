@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { add, format, startOfDay, startOfMonth } from 'date-fns';
+import { add, format, isSameMonth, startOfDay, startOfMonth } from 'date-fns';
 import { DairyEntryCalendarLoader } from './diary-entry-calendar-loader';
 
 export function DairyEntryCalendar() {
@@ -20,14 +20,25 @@ export function DairyEntryCalendar() {
         setCurrentMonth(nextMonth);
     }
 
+    function goToToday() {
+        setCurrentMonth(startOfMonth(today));
+    }
+
     return (
         <>
-            <div className="w-full rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-6 shadow-inner">
+            <div className="h-full w-full rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-6 shadow-inner">
                 <div className="mb-6 flex items-center justify-between">
                     <h2 className="ml-2 flex items-center text-2xl font-bold text-amber-800">
                         {format(currentMonth, 'MMMM yyyy')}
                     </h2>
                     <div className="flex gap-2">
+                        <Button
+                            variant="outline"
+                            onClick={goToToday}
+                            className="rounded-full border-amber-300 hover:bg-amber-100 hover:text-amber-800"
+                        >
+                            Today
+                        </Button>
                         <Button
                             variant="outline"
                             size="icon"
@@ -40,7 +51,8 @@ export function DairyEntryCalendar() {
                             variant="outline"
                             size="icon"
                             onClick={nextMonth}
-                            className="rounded-full border-amber-300 hover:bg-amber-100 hover:text-amber-800"
+                            className="rounded-full border-amber-300 hover:bg-amber-100 hover:text-amber-800 disabled:opacity-50"
+                            disabled={isSameMonth(currentMonth, today)}
                         >
                             <ChevronRight className="h-5 w-5" />
                         </Button>

@@ -4,8 +4,11 @@ import {
     eachDayOfInterval,
     format,
     getDay,
+    isAfter,
+    isBefore,
     isSameMonth,
     isToday,
+    subDays,
 } from 'date-fns';
 import type { MinDairyEntry } from '@/components/diary-entry-modal/types';
 import { cn } from '@/lib/utils';
@@ -28,6 +31,12 @@ export function DairyEntryCalendarDays({
 }: DairyEntryCalendarDaysProps) {
     const visibleRange = getVisibleRange(currentMonth);
     const visibleDays = eachDayOfInterval(visibleRange);
+
+    const today = new Date();
+    const sevenDaysAgo = subDays(today, 7);
+    function isDateSelectable(date: Date): boolean {
+        return !isAfter(date, today) && !isBefore(date, sevenDaysAgo);
+    }
 
     const getDiaryEntry = (day: Date): MinDairyEntry | undefined => {
         return diaryEntries.find(
@@ -57,6 +66,7 @@ export function DairyEntryCalendarDays({
                             )}
                         >
                             <Button
+                                disabled={!isDateSelectable(day)}
                                 onClick={() =>
                                     setModalData({
                                         date: day,
@@ -64,21 +74,22 @@ export function DairyEntryCalendarDays({
                                     })
                                 }
                                 className={cn(
-                                    'flex h-full w-full cursor-pointer flex-col items-center justify-start rounded-xl border p-2 transition',
+                                    'flex h-full w-full flex-col items-center justify-start rounded-xl border p-2 transition',
                                     !isSameMonth(day, currentMonth)
-                                        ? 'bg-white/50 text-amber-300 opacity-50 hover:bg-amber-50'
-                                        : 'bg-white text-amber-900 shadow-sm hover:bg-amber-50',
+                                        ? 'bg-white/50 text-amber-300 opacity-50 hover:bg-amber-100'
+                                        : 'bg-white text-amber-900 shadow-sm hover:bg-amber-100',
                                     isToday(day) &&
                                         !dayEntry &&
                                         'border-green-500 bg-green-50 font-bold',
                                     isToday(day) &&
                                         dayEntry &&
-                                        `border-green-500 font-bold ${getRatingColor(
+                                        `border-2 border-green-500 font-bold ${getRatingColor(
                                             dayEntry.rating,
                                         )}`,
                                     dayEntry &&
                                         !isToday(day) &&
                                         getRatingColor(dayEntry.rating),
+                                    'disabled:opacity-40',
                                 )}
                             >
                                 <time
