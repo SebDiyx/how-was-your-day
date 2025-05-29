@@ -26,6 +26,7 @@ export function DairyEntryModal({
                     date={date}
                     initialData={initialData}
                     onCancel={onClose}
+                    onSave={onClose}
                 />
             </DialogContent>
         </Dialog>

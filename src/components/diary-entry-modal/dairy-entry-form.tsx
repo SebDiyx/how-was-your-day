@@ -32,12 +32,14 @@ export interface DairyEntryFormProps {
     date: Date;
     initialData?: MinDairyEntry;
     onCancel?: () => void;
+    onSave?: () => void;
 }
 
 export function DairyEntryForm({
     date,
     initialData,
     onCancel,
+    onSave,
 }: DairyEntryFormProps) {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -58,8 +60,7 @@ export function DairyEntryForm({
             toast.success(
                 `Dairy entry ${initialData?.id ? 'updated' : 'created'}`,
             );
-            // TODO: make this a new prop called onSave
-            onCancel?.();
+            onSave?.();
         },
         onError: () => {
             toast.error('Failed to create dairy entry');
