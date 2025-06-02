@@ -21,6 +21,7 @@
         "seed": "tsx src/server/db/seed.ts"
     },
     "dependencies": {
+        "@clerk/nextjs": "^6.20.2",
         "@hookform/resolvers": "^5.0.1",
         "@libsql/client": "^0.14.0",
         "@radix-ui/react-dialog": "^1.1.13",
