@@ -1,4 +1,4 @@
-import { dairyEntryRouter } from '@/server/api/routers/dairyEntry';
+import { dairyEntryRouter } from '@/server/api/routers/dairy-entry';
 import { createCallerFactory, createTRPCRouter } from '@/server/api/trpc';
 
 /**
