@@ -5,6 +5,7 @@ import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { TRPCReactProvider } from '@/trpc/react';
 import { Toaster } from '@/components/ui/sonner';
+import { PostHogProvider } from '@/components/PostHogProvider';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -31,20 +32,22 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <TRPCReactProvider>
-                    <SidebarProvider>
-                        <div className="flex min-h-screen w-full">
-                            <AppSidebar />
-                            <main className="flex min-h-screen w-full flex-col bg-gradient-to-b from-amber-100 to-white">
-                                <SidebarTrigger className="m-4 border border-amber-300 bg-amber-200 text-amber-900 hover:bg-amber-300" />
-                                <div className="w-full flex-1 items-center justify-center">
-                                    {children}
-                                </div>
-                            </main>
-                        </div>
-                    </SidebarProvider>
-                </TRPCReactProvider>
-                <Toaster />
+                <PostHogProvider>
+                    <TRPCReactProvider>
+                        <SidebarProvider>
+                            <div className="flex min-h-screen w-full">
+                                <AppSidebar />
+                                <main className="flex min-h-screen w-full flex-col bg-gradient-to-b from-amber-100 to-white">
+                                    <SidebarTrigger className="m-4 border border-amber-300 bg-amber-200 text-amber-900 hover:bg-amber-300" />
+                                    <div className="w-full flex-1 items-center justify-center">
+                                        {children}
+                                    </div>
+                                </main>
+                            </div>
+                        </SidebarProvider>
+                    </TRPCReactProvider>
+                    <Toaster />
+                </PostHogProvider>
             </body>
         </html>
     );
